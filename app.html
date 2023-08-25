@@ -1,0 +1,50 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title>Challenge App</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Challenge App</h1>
+    </div>
+    <form id="form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name"><br><br>
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email"><br><br>
+      <label>College Level:</label>
+      <input type="radio" id="bs" name="collegeLevel" value="bs">
+      <label for="bs">BS</label>
+      <input type="radio" id="ms" name="collegeLevel" value="ms">
+      <label for="ms">MS</label><br><br>
+      <label for="classTaken">Class Taken:</label>
+      <input type="text" id="classTaken" name="classTaken"><br><br>
+      <label for="classExpectation">Class Expectation:</label>
+      <textarea id="classExpectation" name="classExpectation" rows="5" cols="40"></textarea><br><br>
+      <button type="submit">Submit</button>
+    </form>
+    <script>
+      document.getElementById("form").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const collegeLevel = document.querySelector('input[name="collegeLevel"]:checked').value;
+      const classesTaken = document.getElementById("classTaken").value;
+      const classExpectation = document.getElementById("classExpectation").value;
+
+      const userData = {
+        name: name,
+        email: email,
+        collegeLevel: collegeLevel,
+        classesTaken: classesTaken,
+        classExpectation: classExpectation
+      };
+
+      localStorage.setItem("userData", JSON.stringify(userData));
+      alert("Data saved successfully!");
+    });
+  </script>
+</body>
+</html>
+
